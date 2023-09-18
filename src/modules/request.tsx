@@ -10,7 +10,7 @@ const params = {
     collection:"emoji_kitchen_v6"
 }
 async function getEmoji(first:string,second:string):Promise<string> {
-    const p = {q: `${first}_${second}`};//or input.join('_') if typeof input === string[]
+    const p = {q: `${first}_${second}`};//или input.join('_') если параметр функции typeof input === string[]
     Object.assign(params,p);//добавили к параметрам ещё один, в котором содержатся нужные emoji
     try{
         const a = await axios.get(url , {params})

@@ -8,6 +8,8 @@ function App() {
     <>
       <h1 >Emoji Game v1.0</h1>
       <BasicEmoji/>
+      <BasicEmoji/>
+      <BasicEmoji/>
     </>
   )
 }
