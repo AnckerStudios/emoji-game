@@ -10,8 +10,7 @@ export function BasicEmoji(){
           params: {
             key: "AIzaSyDiVitUXK1JtMV--PnwOLGLDd3AJyUx5qo",
             contentfilter: "high",
-            media_filter:"png_transparent",
-            component:"proactive",
+            client_key: "emoji_kitchen_funbox",
             collection:"emoji_kitchen_v6",
             q: '🍊_🦥'
           }})
