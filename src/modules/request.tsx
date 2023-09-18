@@ -11,10 +11,18 @@ const params = {
 }
 async function getEmoji(first:string,second:string):Promise<string> {
     const p = {q: `${first}_${second}`};//or input.join('_') if typeof input === string[]
-    Object.assign(params,p);
-    const a = await axios.get(url , {params})
-
-    console.log(a);
-    return a.data.results[0].media_formats.png_transparent.url;
+    Object.assign(params,p);//добавили к параметрам ещё один, в котором содержатся нужные emoji
+    try{
+        const a = await axios.get(url , {params})
+        console.log(a);
+        return a.data.results[0].media_formats.png_transparent.url;
+    }
+    catch(e){
+        if (e instanceof Error){
+            console.error(e.message);
+        }
+        return "";
+    }
+    
 }
 export default getEmoji;

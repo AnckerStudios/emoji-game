@@ -1,0 +1,1 @@
+export const emojiList:string[] = new Array('🍊','🦥');
