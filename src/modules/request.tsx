@@ -7,11 +7,11 @@ const params = {
     key: publicKey,
     contentfilter: "high",
     client_key: "emoji_kitchen_funbox",
-    collection:"emoji_kitchen_v6"
+    collection:"emoji_kitchen_v6",
+    q:""
 }
 async function getEmoji(first:string,second:string):Promise<string> {
-    const p = {q: `${first}_${second}`};//или input.join('_') если параметр функции typeof input === string[]
-    Object.assign(params,p);//добавили к параметрам ещё один, в котором содержатся нужные emoji
+    params.q = `${first}_${second}`;//или input.join('_') если параметр функции typeof input === string[]
     try{
         const a = await axios.get(url , {params})
         console.log(a);
