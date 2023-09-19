@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import getEmoji from '../modules/request'
-import { emojiList } from '../modules/emojis'
-import { fullEmojiList } from '../modules/emojis'
+
+type CombinedEmojiProps = {
+  first:string,
+  second:string
+}
 
 //Компонент комбинированного emoji, полученного из запроса к гуглу
-export function CombinedEmoji(){
+export function CombinedEmoji({first, second}:CombinedEmojiProps){
     const[combinedEmoji,setCombinedEmoji] = useState<string>()
     useEffect(()=>{
-        getEmoji(emojiList[3], emojiList[6])
+        getEmoji(first, second)
           .then(response => {setCombinedEmoji(response)})
       },[])
     
