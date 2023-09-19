@@ -13,14 +13,13 @@ function App() {
   const [second, setSecond] = useState("")
   const [res, setRes] = useState<string>("")
   useEffect(()=>{
-    generate(undefined)
-    // setFirst(getRandomEmoji());
-    // setSecond(getRandomEmoji());
-    // const interval = setInterval(() =>{
-    //   setFirst(getRandomEmoji());
-    //   setSecond(getRandomEmoji())
-    // },2000);
-    // return () => clearInterval(interval);
+    setFirst(getRandomEmoji());
+    setSecond(getRandomEmoji());
+    const interval = setInterval(() =>{
+      setFirst(getRandomEmoji());
+      setSecond(getRandomEmoji());
+    },2000);
+    return () => clearInterval(interval);
   }, [])
 
   const generate = (firstEmoji: string | undefined) => {

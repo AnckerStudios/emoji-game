@@ -10,12 +10,10 @@ type CombinedEmojiProps = {
 //Компонент комбинированного emoji, полученного из запроса к гуглу
 export function CombinedEmoji({first, second, res }:CombinedEmojiProps){
     const[combinedEmoji,setCombinedEmoji] = useState<string>()
-    // useEffect(()=>{
-    //   console.log("dsds");
-    //     // getTenEmoji(first)
-    //     // // getEmoji(first, second)
-    //     //   .then(response => {setCombinedEmoji(response)})
-    //   },[first])
+    useEffect(()=>{
+        getEmoji(first, second)
+          .then(response => {setCombinedEmoji(response)})
+      },[first||second])
     
     return(
       combinedEmoji!==""?
