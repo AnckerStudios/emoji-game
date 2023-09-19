@@ -19,13 +19,15 @@ type BasicEmojiProps ={
 
 
 export function BasicEmojiAsImage({emoji, size, type}:BasicEmojiProps){
-    console.log(emoji)
-    let url;
-    if(!emoji){
-    const emojiCode = emoji.codePointAt(0)!.toString(16);
-    url =`https://raw.githubusercontent.com/googlefonts/noto-emoji/main/${type}/${type===imageType.png?size:""}/emoji_u${emojiCode}.${type}`;
+    if(emoji){
+        const emojiCode = emoji.codePointAt(0)!.toString(16);
+        const url =`https://raw.githubusercontent.com/googlefonts/noto-emoji/main/${type}/${type===imageType.png?size:""}/emoji_u${emojiCode}.${type}`;
+        return(
+            <img src={url}/>
+        )    
     }
     return(
-      <img src={url}/>
+        <div>DC</div>
     )
+
 }
