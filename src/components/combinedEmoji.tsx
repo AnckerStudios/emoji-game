@@ -15,6 +15,8 @@ export function CombinedEmoji({first, second}:CombinedEmojiProps){
       },[])
     
     return(
-      <img src={combinedEmoji}/>
+      combinedEmoji!==""?
+        <img src={combinedEmoji}/>:
+        "Combination is not possible"
     )
 }
