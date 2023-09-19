@@ -1,15 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { CombinedEmoji } from './components/combinedEmoji';
 import { BasicEmoji } from './components/basicEmoji';
-import { BasicEmojiAsImage, sizes } from './components/basicEmojiAsImage';
+import { BasicEmojiAsImage, pixelSize, imageType } from './components/basicEmojiAsImage';
 import { emojiListTest, fullTextEmojiList } from './modules/emojis';
 import { getRandomEmoji } from './modules/random';
 
 
 function App() {
-  const first = getRandomEmoji();
-  const second = getRandomEmoji();
+  const [first, setFirst] = useState("")
+  const [second, setSecond] = useState("")
+  useEffect(()=>{
+
+    const interval = setInterval(() =>{
+      setFirst(getRandomEmoji());
+      setSecond(getRandomEmoji())
+    },30000);
+    return () => clearInterval(interval);
+  }, [])
+  //setFirst(getRandomEmoji());
+  //setSecond(getRandomEmoji());
+
+  //const first = getRandomEmoji();
+  //const second = getRandomEmoji();
   return (
     <>
       <h1>Emoji Game v1.0</h1>
@@ -22,8 +35,8 @@ function App() {
       */}
       <BasicEmoji emoji={first}/>
       <BasicEmoji emoji={second}/>
-      <BasicEmojiAsImage emoji={first} size={sizes.medium}/>
-      <BasicEmojiAsImage emoji={second} size={sizes.medium}/>
+      <BasicEmojiAsImage emoji={first} size={pixelSize.small} type={imageType.png}/>
+      <BasicEmojiAsImage emoji={second} size={pixelSize.small} type={imageType.png}/>
       <CombinedEmoji first={first} second={second}/>
     </>
   )
