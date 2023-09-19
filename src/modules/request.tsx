@@ -17,9 +17,10 @@ async function getEmoji(first:string,second:string):Promise<string> {
         console.log(a);
         return a.data.results[0].media_formats.png_transparent.url;
     }
-    catch(e){
-        if (e instanceof Error){
-            console.error(e.message);
+    catch(err){
+        if (axios.isAxiosError(err)){
+            console.log(err.status)
+            console.error(err.response);
         }
         return "";
     }

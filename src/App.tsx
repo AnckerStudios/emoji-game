@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import './App.css'
+import { CombinedEmoji } from './components/combinedEmoji';
 import { BasicEmoji } from './components/basicEmoji';
 
 function App() {
   
   return (
     <>
-      <h1 >Emoji Game v1.0</h1>
-      <BasicEmoji/>
-      <BasicEmoji/>
-      <BasicEmoji/>
+      <h1>Emoji Game v1.0</h1>
+      <BasicEmoji emoji="🍊"/>
+      <BasicEmoji emoji="🦥"/>
+      <CombinedEmoji/>
     </>
   )
 }
