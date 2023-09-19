@@ -11,11 +11,12 @@ function App() {
   const [first, setFirst] = useState("")
   const [second, setSecond] = useState("")
   useEffect(()=>{
-
+    setFirst(getRandomEmoji());
+    setSecond(getRandomEmoji());
     const interval = setInterval(() =>{
       setFirst(getRandomEmoji());
-      setSecond(getRandomEmoji())
-    },30000);
+      setSecond(getRandomEmoji());
+    },2000);
     return () => clearInterval(interval);
   }, [])
   //setFirst(getRandomEmoji());

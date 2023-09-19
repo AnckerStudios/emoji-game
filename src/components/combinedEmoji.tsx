@@ -12,7 +12,7 @@ export function CombinedEmoji({first, second}:CombinedEmojiProps){
     useEffect(()=>{
         getEmoji(first, second)
           .then(response => {setCombinedEmoji(response)})
-      },[])
+      },[first||second])
     
     return(
       combinedEmoji!==""?
