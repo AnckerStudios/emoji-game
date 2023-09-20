@@ -26,7 +26,7 @@ export function BasicEmojiAsImage({emoji, size, type}:BasicEmojiProps){
         }
         const url =`https://raw.githubusercontent.com/googlefonts/noto-emoji/main/${type}/${type===imageType.png?size:""}/emoji_u${emojiCode}.${type}`;
         return(
-            <img src={url}/>
+            <img loading="lazy" alt="sds" src={url}/>
         )    
     }
     return(

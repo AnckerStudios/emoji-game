@@ -20,7 +20,7 @@ async function getEmoji(first:string,second:string):Promise<ReturnProps> {
     try{
         const a = await axios.get(url , { params })
         if (a.data.results.length) {
-            console.info(a.data);
+            // console.info(a.data);
             return {res:a.data.results[0].media_formats.png_transparent.url, first:first, second:second};
         }
         throw "combination does not exist"
@@ -31,7 +31,7 @@ async function getEmoji(first:string,second:string):Promise<ReturnProps> {
         //     console.error(err.response);
         // }
         // return "";
-        console.log(err)
+        // console.log(err)
         throw err;
     }
     

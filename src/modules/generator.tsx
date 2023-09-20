@@ -13,7 +13,7 @@ export function filterArray<T>(array:T[], itemsToRemove:T[]){
 }
 
 export  async function generate(firstEmoji: string, remainingFirstEmojis:string[],remainingSecondEmojis:string[]):Promise<ReturnProps> {
-    console.log("Generate function called");
+    // console.log("Generate function called");
     
     const pickFirstEmoji = () => {
         if(remainingFirstEmojis.length==0)
@@ -36,7 +36,7 @@ export  async function generate(firstEmoji: string, remainingFirstEmojis:string[
     const arr = pickSecondEmojis();
     return await Promise.any(arr.map(x=>getEmoji(firstEmoji, secondEmoji=x)))
       .then(response => {
-        console.log("Emoji pair was found");
+        // console.log("Emoji pair was found");
         return({output:response.res, first:response.first,second:response.second});
         })
       .catch(() => generate(firstEmoji, remainingFirstEmojis,remainingSecondEmojis)

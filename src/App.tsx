@@ -5,6 +5,7 @@ import { BasicEmoji } from './components/basicEmoji';
 import { BasicEmojiAsImage, pixelSize, imageType } from './components/basicEmojiAsImage';
 import { generate } from './modules/generator';
 import { emojiListTest, fullEmojiList } from './modules/emojis';
+import EmojiKeyboard from './components/emojiKeyboard';
 
 
 function App() {
@@ -24,8 +25,10 @@ function App() {
     const interval = setInterval(getImageUrl,2000);
     return () => clearInterval(interval);
   }
-  useEffect(getImageUrl,[])
-  useEffect(isContinous?getImageByTimer:()=>{},[isContinous])
+  // useEffect (
+  //   getImageUrl,[]
+  // )
+  useEffect(isContinous ? getImageByTimer : ()=>{}, [isContinous])
 
   
   return (
@@ -33,11 +36,12 @@ function App() {
       <h1>Emoji Game v1.0</h1>
       <div onClick={()=>{setIsContinous(!isContinous)}}>{isContinous?"stop ⏹":"start ▶️"}</div>
       <div onClick={getImageUrl}>new emoji pair 🔃</div>
-      <BasicEmoji emoji={first}/>
+      {/* <BasicEmoji emoji={first}/>
       <BasicEmoji emoji={second}/>
       <BasicEmojiAsImage emoji={first} size={pixelSize.small} type={imageType.png}/>
       <BasicEmojiAsImage emoji={second} size={pixelSize.small} type={imageType.png}/>
-      <CombinedEmoji imageUrl={res} />
+      <CombinedEmoji imageUrl={res} /> */}
+      <EmojiKeyboard />
     </>
   )
 }
