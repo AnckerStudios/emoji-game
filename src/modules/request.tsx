@@ -9,16 +9,21 @@ const params = {
     client_key: "emoji_kitchen_funbox",
     collection:"emoji_kitchen_v6",
 }
-async function getEmoji(first:string,second:string):Promise<string> {
+type ReturnProps = {
+    res:string,
+    first:string,
+    second:string
+}
+async function getEmoji(first:string,second:string):Promise<ReturnProps> {
     // .q = `${first}_${second}`;//или input.join('_') если параметр функции typeof input === string[]
     Object.assign(params,{q:`${first}_${second}`})
     try{
         const a = await axios.get(url , { params })
-        console.log(a);
         if (a.data.results.length) {
-            return a.data.results[0].media_formats.png_transparent.url;
+            console.info(a.data);
+            return {res:a.data.results[0].media_formats.png_transparent.url, first:first, second:second};
         }
-        throw "бля"
+        throw "combination does not exist"
     }
     catch(err){
         // if (axios.isAxiosError(err)){
@@ -26,6 +31,7 @@ async function getEmoji(first:string,second:string):Promise<string> {
         //     console.error(err.response);
         // }
         // return "";
+        console.log(err)
         throw err;
     }
     

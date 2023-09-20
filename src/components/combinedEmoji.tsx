@@ -2,22 +2,19 @@ import { useEffect, useState } from 'react'
 import getEmoji from '../modules/request'
 
 type CombinedEmojiProps = {
-  first: string,
-  second: string,
-  res: string
+  imageUrl: string
 }
 
-//Компонент комбинированного emoji, полученного из запроса к гуглу
-export function CombinedEmoji({first, second, res }:CombinedEmojiProps){
-    const[combinedEmoji,setCombinedEmoji] = useState<string>()
-    useEffect(()=>{
-        getEmoji(first, second)
-          .then(response => {setCombinedEmoji(response)})
-      },[first||second])
+export function CombinedEmoji( {imageUrl}:CombinedEmojiProps){
+    // const[combinedEmoji,setCombinedEmoji] = useState<string>()
+    // useEffect(()=>{
+    //     getEmoji(first, second)
+    //       .then(response => {setCombinedEmoji(response)})
+    //   },[first||second])
     
     return(
-      combinedEmoji!==""?
-        <img src={res}/>:
+      imageUrl!==""?
+        <img src={imageUrl}/>:
         "Combination is not possible"
     )
 }
