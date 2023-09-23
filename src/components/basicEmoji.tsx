@@ -5,7 +5,7 @@ type BasicEmojiProps ={
 }
 
 
-export function BasicEmoji({emoji}:BasicEmojiProps){    
+export function BasicEmoji({emoji}:BasicEmojiProps){    // А он нам нужен?
     return(
         <div>{emoji}</div>
     )
