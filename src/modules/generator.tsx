@@ -1,4 +1,4 @@
-import { getRandomEmoji, getRandomEmojiArray, getRandomEmojiArrayFromArray, getRandomEmojiFromArray } from "./random";
+import { getRandomEmoji, getRandomEmojiArray, getRandomEmojiArrayFromArray, getRandomEmojiFromArray, getRandomIndex } from "./random";
 import getEmoji from "./request";
 
 type ReturnProps = {
@@ -12,7 +12,22 @@ export function filterArray<T>(array:T[], itemsToRemove:T[]){
     })
 }
 
-export  async function generate(firstEmoji: string, remainingFirstEmojis:string[],remainingSecondEmojis:string[]):Promise<ReturnProps> {
+export function getRandomEmojiList(preEmoji: string, remainingFirstEmojis:string[], size: number = 25) {
+    const arr = []
+    let step = 0;
+    while (step < size-1) {
+        const emoji = getRandomEmojiFromArray(remainingFirstEmojis);
+        if (emoji !== preEmoji) {
+            remainingFirstEmojis= filterArray(remainingFirstEmojis,[emoji]);
+            step++;
+            arr.push(emoji);
+        }
+    }
+    arr.splice(getRandomIndex(arr.length), 0, preEmoji)
+    return arr;
+}
+
+export async function generate(firstEmoji: string, remainingFirstEmojis:string[],remainingSecondEmojis:string[]):Promise<ReturnProps> {
     // console.log("Generate function called");
     
     const pickFirstEmoji = () => {

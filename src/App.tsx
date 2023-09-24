@@ -7,11 +7,14 @@ import { generate } from './modules/generator';
 import { emojiListTest, fullEmojiList } from './modules/emojis';
 import EmojiKeyboard from './components/emojiKeyboard';
 import EmojiPicker from './components/emojiPicker';
+import FailScrean from './components/failScrean';
+import GuessGame from './components/guessGame';
 
 
 function App() {
   const [firstEmoji, setFirstEmoji] = useState("")
   const [secondEmoji, setSecondEmoji] = useState("")
+  const [score, setScore] = useState(0)
   const [isContinous, setIsContinous]= useState(false)
   // const getImageUrl = () => {
   //   generate("", fullEmojiList,fullEmojiList)
@@ -33,11 +36,10 @@ function App() {
   
   return (
     <>
-      <h1>Emoji Game v1.0</h1>
       {/* <div onClick={()=>{setIsContinous(!isContinous)}}>{isContinous?"stop ⏹":"start ▶️"}</div>
       <div onClick={getImageUrl}>new emoji pair 🔃</div> */}
-      <div className=' mx-auto max-w-7xl flex gap-2'>
-        <div className=' w-1/3'>
+      
+        {/* <div className=' w-1/3'>
           <EmojiPicker emoji={firstEmoji} setEmoji={setFirstEmoji}/>
         </div>
         <div className=' w-1/3 flex flex-col items-center'>
@@ -45,8 +47,10 @@ function App() {
         </div>
         <div className=' w-1/3'>
         <EmojiPicker emoji={secondEmoji} setEmoji={setSecondEmoji}/>
-        </div>
-      </div>
+        </div> */}
+        <GuessGame />
+      
+      {/* <FailScrean /> */}
       {/* <BasicEmoji emoji={first}/>
       <BasicEmoji emoji={second}/>
       <BasicEmojiAsImage emoji={first} size={pixelSize.small} type={imageType.png}/>
