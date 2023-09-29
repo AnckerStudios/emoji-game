@@ -1,15 +1,11 @@
 import { FunctionComponent } from "react";
+import { EmojiComboI } from "../interfaces/emojiComboI";
 
 interface EmojiRouletteProps {
     emojiList: (EmojiComboI|null)[]
 }
 
-interface EmojiComboI { //TODO вынести в отдельный файл
-    first: string,
-    second: string,
-    output: string,
-    state: string
-}
+
  
 const EmojiRoulette: FunctionComponent<EmojiRouletteProps> = ({emojiList}) => {
     return ( 

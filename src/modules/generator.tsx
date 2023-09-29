@@ -47,9 +47,8 @@ export async function generate(firstEmoji: string, remainingFirstEmojis:string[]
     }   
 
     firstEmoji = firstEmoji || pickFirstEmoji();//getRandomEmoji()
-    let secondEmoji = "";
     const arr = pickSecondEmojis();
-    return await Promise.any(arr.map(x=>getEmoji(firstEmoji, secondEmoji=x)))
+    return await Promise.any(arr.map(x=>getEmoji(firstEmoji, x)))
       .then(response => {
         // console.log("Emoji pair was found");
         return({output:response.res, first:response.first,second:response.second});

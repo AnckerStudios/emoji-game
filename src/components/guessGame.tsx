@@ -5,16 +5,11 @@ import { fullEmojiList } from "../modules/emojis";
 import { BasicEmojiAsImage, imageType, pixelSize } from "./basicEmojiAsImage";
 import EmojiKeyboard from "./emojiKeyboard";
 import EmojiRoulette from "./emojiRoulette";
+import { EmojiComboI } from "../interfaces/emojiComboI";
+import { BaseComponent } from "./roulette_components/baseComponent";
 
 interface GuessGameProps {
     
-}
-
-interface EmojiComboI {
-    first: string,
-    second: string,
-    output: string,
-    state: string
 }
 
 const GuessGame: FunctionComponent<GuessGameProps> = () => {
@@ -61,7 +56,7 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
                 {emojiList[3] && 
                 <>
                     <EmojiKeyboard width={5} height={5} preEmoji={emojiList[3].first} selectedEmoji={selectedFirst} setEmoji={setSelectedFirst} />
-                    <EmojiRoulette emojiList={emojiList} />
+                    <BaseComponent emojiComboList={emojiList}></BaseComponent>
                     <EmojiKeyboard width={5} height={5} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
                 </>}
             </div>
@@ -69,3 +64,4 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
 }
  
 export default GuessGame;
+//<EmojiRoulette emojiList={emojiList} />
