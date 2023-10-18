@@ -2,5 +2,12 @@ export interface EmojiComboI { //TODO вынести в отдельный фа�
     first: string,
     second: string,
     output: string,
-    state: string
+    state: EmojiComboState
+}
+export enum EmojiComboState{
+    CORRECT,
+    WRONG,
+    UNKNOWN,
+    EMPTY,
+    CENTER
 }

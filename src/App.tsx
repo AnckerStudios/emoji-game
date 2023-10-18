@@ -48,7 +48,7 @@ function App() {
         <div className=' w-1/3'>
         <EmojiPicker emoji={secondEmoji} setEmoji={setSecondEmoji}/>
         </div> */}
-        <div className='bg-background'>
+        <div className='h-screen bg-background'>
           <GuessGame />
         </div>
       

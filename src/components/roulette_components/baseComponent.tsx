@@ -1,16 +1,18 @@
 import { EmojiComboI } from '../../interfaces/emojiComboI'
-import { innerComponent } from './innerComponent'
+import { InnerComponent } from './innerComponent'
 
 interface BaseProps{
-    emojiComboList: (EmojiComboI|null)[]
+    emojiComboList: EmojiComboI[]
+    visibleListSize:number
 }
 
-export function BaseComponent({emojiComboList}:BaseProps){  
+export function BaseComponent({emojiComboList, visibleListSize}:BaseProps){  
+    const middleIdx = Math.floor(visibleListSize/2);
     
     return(
         <div className='flex flex-col gap-6 items-center justify-center'>
-            { emojiComboList.slice(0,7).map((emojiCombo, i) => (
-                innerComponent({emojiCombo,i})
+            { emojiComboList.slice(0,visibleListSize).map((emojiCombo, i) => (
+                InnerComponent({emojiCombo, i, middleIdx})
             ))}
         </div>
     )

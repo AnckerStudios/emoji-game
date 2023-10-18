@@ -1,12 +1,13 @@
-import { EmojiComboI } from '../../interfaces/emojiComboI'
+import { EmojiComboI, EmojiComboState } from '../../interfaces/emojiComboI'
+import { StateComponent } from './stateComponent';
 
 interface InnerProps{
-    emojiCombo:EmojiComboI|null;
+    emojiCombo:EmojiComboI;
     i:number;
+    middleIdx: number;
 }
 
-const middleIdx = 3;
-export function innerComponent({emojiCombo,i}:InnerProps){  
+export function InnerComponent({emojiCombo, i, middleIdx}:InnerProps){  
     let style = '-2 relative bg-green rounded-2xl grid place-items-center ';
     style+= (i == middleIdx) ? 'w-big h-big rounded-big shadow-big shadow-peach translate-x-5 translate-x-5 ' : 'w-small h-small rounded-small '//посмотри tailwind.config.js
 
@@ -15,7 +16,8 @@ export function innerComponent({emojiCombo,i}:InnerProps){
 
     return(
         <div key={i} className={style}>
-                {emojiCombo && <img className={imgStyle} key={i} src={emojiCombo.output} />}
+            {emojiCombo.state!=EmojiComboState.EMPTY && <img className={imgStyle} key={i} src={emojiCombo.output} />}
+            <StateComponent emojiCombo={emojiCombo}></StateComponent>
         </div>
     )
 }
