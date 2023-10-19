@@ -16,8 +16,21 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
     const [emojiList, setEmojiList] = useState<(EmojiComboI)[]>([]);
     const [selectedFirst, setSelectedFirst] = useState<string>('');
     const [selectedSecond, setSelectedSecond] = useState<string>('');
+    const [keyboardCols, setKeyboardCols] = useState<number>(5);
     const emojiListSize = 10;
 
+    function changeKeyboardSize(){
+        const width = window.innerWidth;
+        if(width>1024){
+            setKeyboardCols(5);
+        }
+        else if(width > 768 && width<=1024){
+            setKeyboardCols(3);
+        }
+        else {
+            setKeyboardCols(2);
+        }
+    }
 
     useEffect(() => {
         if (emojiList.length) return;
@@ -41,6 +54,8 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
             setEmojiList(arr);
         }
         generateEmojiList();
+        changeKeyboardSize();
+        window.addEventListener("resize", changeKeyboardSize)
     },[])
 
     useEffect(() => {
@@ -64,13 +79,15 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
         console.log(emojiList);
     },[selectedFirst, selectedSecond])
 
+
     return ( emojiList.length ? 
         <div className="mx-auto max-w-7xl flex gap-10 items-center">
-                <BaseKeyboard width={5} height={5} preEmoji={emojiList[3].first} selectedEmoji={selectedFirst} setEmoji={setSelectedFirst} />
+                <BaseKeyboard width={5} height={5} cols={keyboardCols} preEmoji={emojiList[3].first} selectedEmoji={selectedFirst} setEmoji={setSelectedFirst} />
                 <BaseComponent emojiComboList={emojiList} visibleListSize={emojiListSize-3}></BaseComponent>
-                <BaseKeyboard width={5} height={5} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
+                <BaseKeyboard width={5} height={5} cols={keyboardCols} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
         </div>: 
-        <Preloader/>);
+        <Preloader/>
+    );
 }
  
 export default GuessGame;
