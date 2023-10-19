@@ -3,7 +3,7 @@ import { generate} from "../modules/generator";
 import { fullEmojiList } from "../modules/emojis";
 import EmojiKeyboard from "./EmojiKeyboard";
 import { EmojiComboI, EmojiComboState } from "../interfaces/emojiComboI";
-import { BaseComponent } from "./RouletteComponents/BaseRouletteComponent";
+import { BaseComponent } from "./RouletteComponents/BaseRoulette";
 import Preloader from "./Preloader";
 import { BaseKeyboard } from "./KeyboardComponents/BaseKeyboard";
 

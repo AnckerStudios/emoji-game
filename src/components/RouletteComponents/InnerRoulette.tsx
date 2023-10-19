@@ -1,5 +1,5 @@
 import { EmojiComboI, EmojiComboState } from '../../interfaces/emojiComboI'
-import { StateComponent } from './StateRouletteComponent';
+import { StateComponent } from './StateRoulette';
 
 interface InnerProps{
     emojiCombo:EmojiComboI;
