@@ -1,5 +1,5 @@
 import { EmojiComboI } from '../../interfaces/emojiComboI'
-import { InnerComponent } from './innerComponent'
+import { InnerComponent } from './InnerRouletteComponent'
 
 interface BaseProps{
     emojiComboList: EmojiComboI[]

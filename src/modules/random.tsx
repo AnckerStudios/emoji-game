@@ -1,7 +1,7 @@
 import { fullTextEmojiList } from "./emojis";
 
 export function getRandomIndex(length:number):number{
-    return Math.floor(Math.random() * length);
+    return Math.floor(Math.random() * (length-1));
 }
 
 export function getRandomEmoji():string{

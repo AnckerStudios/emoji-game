@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import { BasicEmojiAsImage, pixelSize, imageType } from "./basicEmojiAsImage";
-import EmojiKeyboard from "./emojiKeyboard";
+import { BasicEmojiAsImage, pixelSize, imageType } from "./BasicEmojiAsImage";
+import EmojiKeyboard from "./EmojiKeyboard";
 
 interface EmojiPickerProps {
     emoji: string,

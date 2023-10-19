@@ -11,14 +11,14 @@ export const enum imageType {
     png = "png",
     svg = "svg"
 }
-type BasicEmojiProps ={ 
-    emoji:string,
-    size:pixelSize,
+interface BasicEmojiProps { 
+    emoji:string
+    size?:pixelSize
     type:imageType
 }
 
 
-export function BasicEmojiAsImage({emoji, size, type}:BasicEmojiProps){
+export function BasicEmojiAsImage({emoji, size = pixelSize.medium, type}:BasicEmojiProps){
     if(emoji){
         let emojiCode = emoji.codePointAt(0)!.toString(16);
         while(emojiCode.length<4){

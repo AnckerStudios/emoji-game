@@ -1,14 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { CombinedEmoji } from './components/combinedEmoji';
-import { BasicEmoji } from './components/basicEmoji';
-import { BasicEmojiAsImage, pixelSize, imageType } from './components/basicEmojiAsImage';
-import { generate } from './modules/generator';
-import { emojiListTest, fullEmojiList } from './modules/emojis';
-import EmojiKeyboard from './components/emojiKeyboard';
-import EmojiPicker from './components/emojiPicker';
-import FailScrean from './components/failScrean';
-import GuessGame from './components/guessGame';
+import GuessGame from './components/GuessGame';
 
 
 function App() {

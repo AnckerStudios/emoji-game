@@ -1,10 +1,11 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { generate} from "../modules/generator";
 import { fullEmojiList } from "../modules/emojis";
-import EmojiKeyboard from "./emojiKeyboard";
+import EmojiKeyboard from "./EmojiKeyboard";
 import { EmojiComboI, EmojiComboState } from "../interfaces/emojiComboI";
-import { BaseComponent } from "./roulette_components/baseComponent";
-import Preloader from "./preloader";
+import { BaseComponent } from "./RouletteComponents/BaseRouletteComponent";
+import Preloader from "./Preloader";
+import { BaseKeyboard } from "./KeyboardComponents/BaseKeyboard";
 
 interface GuessGameProps {
     
@@ -15,7 +16,9 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
     const [emojiList, setEmojiList] = useState<(EmojiComboI)[]>([]);
     const [selectedFirst, setSelectedFirst] = useState<string>('');
     const [selectedSecond, setSelectedSecond] = useState<string>('');
-    const [emojiListSize, setEmojiListSize] = useState<number>(10);
+    const emojiListSize = 10;
+
+
     useEffect(() => {
         if (emojiList.length) return;
 
@@ -37,7 +40,6 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
             }
             setEmojiList(arr);
         }
-
         generateEmojiList();
     },[])
 
@@ -64,9 +66,9 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
 
     return ( emojiList.length ? 
         <div className="mx-auto max-w-7xl flex gap-10 items-center">
-                <EmojiKeyboard width={5} height={5} preEmoji={emojiList[3].first} selectedEmoji={selectedFirst} setEmoji={setSelectedFirst} />
+                <BaseKeyboard width={5} height={5} preEmoji={emojiList[3].first} selectedEmoji={selectedFirst} setEmoji={setSelectedFirst} />
                 <BaseComponent emojiComboList={emojiList} visibleListSize={emojiListSize-3}></BaseComponent>
-                <EmojiKeyboard width={5} height={5} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
+                <BaseKeyboard width={5} height={5} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
         </div>: 
         <Preloader/>);
 }
