@@ -6,6 +6,7 @@ import { EmojiComboI, EmojiComboState } from "../interfaces/emojiComboI";
 import { BaseComponent } from "./RouletteComponents/BaseRoulette";
 import Preloader from "./Preloader";
 import { BaseKeyboard } from "./KeyboardComponents/BaseKeyboard";
+import TimerRoulette from "./RouletteComponents/TimerRoulette";
 
 interface GuessGameProps {
     
@@ -81,12 +82,17 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
 
 
     return ( emojiList.length ? 
-        <div className="mx-auto max-w-7xl flex gap-10 items-center">
-                <BaseKeyboard width={5} height={5} cols={keyboardCols} preEmoji={emojiList[3].first} selectedEmoji={selectedFirst} setEmoji={setSelectedFirst} />
-                <BaseComponent emojiComboList={emojiList} visibleListSize={emojiListSize-3}></BaseComponent>
-                <BaseKeyboard width={5} height={5} cols={keyboardCols} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
-        </div>: 
-        <Preloader/>
+        // <div className="mx-auto max-w-7xl flex flex-col gap-10 items-center">
+        //         <BaseComponent emojiComboList={emojiList} visibleListSize={emojiListSize-3}></BaseComponent>
+        //         <BaseKeyboard width={5} height={5} cols={keyboardCols} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
+        // </div>
+        <div className=" bg-black w-full h-[18rem] lg:h-[30rem] flex justify-center items-center ">
+            <div className=" bg-white aspect-square w-[8rem] lg:w-[15rem]">
+                <TimerRoulette />
+            </div>
+        </div>
+        : 
+        <Preloader />
     );
 }
  

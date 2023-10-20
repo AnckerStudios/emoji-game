@@ -4,7 +4,7 @@ interface StateProps{
     emojiCombo:EmojiComboI;
 }
 
-export function StateComponent({emojiCombo}:StateProps){  
+export function StateRoulette({emojiCombo}:StateProps){  
     let style = 'absolute inset-0 flex items-center justify-center text-4xl ';
     style += emojiCombo.state === EmojiComboState.UNKNOWN ? 'text-white ' : '';
     let stateSymbol;
