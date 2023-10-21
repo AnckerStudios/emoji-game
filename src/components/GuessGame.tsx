@@ -88,7 +88,7 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
         // </div>
         <div className=" bg-black w-full h-[18rem] lg:h-[30rem] flex justify-center items-center ">
             <div className=" bg-white aspect-square w-[8rem] lg:w-[15rem]">
-                <TimerRoulette />
+                <TimerRoulette time={5000} />
             </div>
         </div>
         : 

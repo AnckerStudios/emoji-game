@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
+interface TimerRouletteProps{
+  time: number
+  resolution?: number
+  strokeWidth?: number
+  borderRadius?: number
+}
 
-export default function TimerRoulette() {
-    const time = 5000;
-    const resolution = 10;
+export default function TimerRoulette({time, resolution=10, strokeWidth=6, borderRadius = 15}:TimerRouletteProps) {
     const reset = true;
-    const strokeWidth = 6;    
-    const borderRdius = 15;
 
     const halfStWidth = strokeWidth/2;
-    const rectLength = 400-8*borderRdius-4*strokeWidth+2*borderRdius*Math.PI;
+    const rectLength = 400-8*borderRadius-4*strokeWidth+2*borderRadius*Math.PI;
 
-    const [ticks, setTicks] = useState(time);
+    const [ticks, setTicks] = useState<number>(time);
   useEffect(() => {
     const interval = setInterval(()=>{
         setTicks(prev => {
@@ -31,7 +33,7 @@ export default function TimerRoulette() {
   return (
     <div className=" relative w-full h-full">
       <svg width="100%" height="100%" viewBox="0,0,100,100" className=" stroke-blue bg-peach">
-        <path d={`M50,${halfStWidth} h${50-borderRdius-halfStWidth} a${borderRdius},${borderRdius} 0 0 1 ${borderRdius},${borderRdius} v${100-2*borderRdius-strokeWidth} a${borderRdius},${borderRdius} 0 0 1 -${borderRdius},${borderRdius} h-${100-2*borderRdius-strokeWidth} a${borderRdius},${borderRdius} 0 0 1 -${borderRdius},-${borderRdius} v-${100-2*borderRdius-strokeWidth} a${borderRdius},${borderRdius} 0 0 1 ${borderRdius},-${borderRdius} z`}
+        <path d={`M50,${halfStWidth} h${50-borderRadius-halfStWidth} a${borderRadius},${borderRadius} 0 0 1 ${borderRadius},${borderRadius} v${100-2*borderRadius-strokeWidth} a${borderRadius},${borderRadius} 0 0 1 -${borderRadius},${borderRadius} h-${100-2*borderRadius-strokeWidth} a${borderRadius},${borderRadius} 0 0 1 -${borderRadius},-${borderRadius} v-${100-2*borderRadius-strokeWidth} a${borderRadius},${borderRadius} 0 0 1 ${borderRadius},-${borderRadius} z`}
         fill="none"
         strokeWidth={`${strokeWidth}%`}
         strokeDasharray={`${rectLength}%`}
