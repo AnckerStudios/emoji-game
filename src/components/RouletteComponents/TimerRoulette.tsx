@@ -3,13 +3,24 @@ import { useEffect, useState } from "react";
 export default function TimerRoulette() {
     const time = 5000;
     const resolution = 10;
-    const size = 400
+    const size = 400;
+    const reset = true;
+    const strokeWidth = 6;    
+    const borderRdius = 15;
+
+    const halfStWidth = strokeWidth/2;
+    const rectLength = 400-8*borderRdius-4*strokeWidth+2*borderRdius*Math.PI;
+
     const [ticks, setTicks] = useState(time);
   useEffect(() => {
     const interval = setInterval(()=>{
         setTicks(prev => {
-            const cur = prev - resolution;
-            if (cur <= 0) clearInterval(interval);
+            let cur = prev - resolution;
+            if (cur <= 0) 
+              if(reset)
+                cur = time;
+              else
+                clearInterval(interval);
             return cur;
         });
     }, resolution);
@@ -20,29 +31,21 @@ export default function TimerRoulette() {
 
   return (
     <div className=" relative w-full h-full">
-      <svg width="100%" height="100%" className=" bg-slate-700">
-        <g>
-          <rect
-            width="94%"
-            height="94%"
-            rx="5%"
-            x="3%"
-            y="3%"
-            fill="transparent"
-            stroke="red"
-            strokeWidth="5%"
-            strokeDasharray={`400% ${400-400*ticks/time}%`}
-            strokeDashoffset={`${-1*(400-400*ticks/time+42)}%`}
-            // strokeDashoffset={'-1*'}
-            // strokeDasharray={`0 ${400-400*ticks/time} 400`}
-            // strokeDashoffset={-35}
-            strokeLinecap="round"
-          ></rect>
-        </g>
+      <svg width="100%" height="100%" viewBox="0,0,100,100" className="bg-peach">
+        <path d={`M50,${halfStWidth} h${50-borderRdius-halfStWidth} a${borderRdius},${borderRdius} 0 0 1 ${borderRdius},${borderRdius} v${100-2*borderRdius-strokeWidth} a${borderRdius},${borderRdius} 0 0 1 -${borderRdius},${borderRdius} h-${100-2*borderRdius-strokeWidth} a${borderRdius},${borderRdius} 0 0 1 -${borderRdius},-${borderRdius} v-${100-2*borderRdius-strokeWidth} a${borderRdius},${borderRdius} 0 0 1 ${borderRdius},-${borderRdius} z`}
+        fill="none"
+        stroke="blue"
+        strokeWidth={`${strokeWidth}%`}
+        strokeDasharray={`${rectLength}%`}
+        strokeDashoffset={`${-1*(rectLength-rectLength*ticks/time)}%`}
+        strokeLinecap="round"
+        ></path>
       </svg>
       <div className=" absolute top-0 left-0 z-20">
         {ticks}
       </div>
+
+      
     </div>
   );
 }
