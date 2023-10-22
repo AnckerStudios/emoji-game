@@ -86,8 +86,8 @@ const GuessGame: FunctionComponent<GuessGameProps> = () => {
         //         <BaseComponent emojiComboList={emojiList} visibleListSize={emojiListSize-3}></BaseComponent>
         //         <BaseKeyboard width={5} height={5} cols={keyboardCols} preEmoji={emojiList[3].second}  selectedEmoji={selectedSecond} setEmoji={setSelectedSecond} />
         // </div>
-        <div className=" bg-black w-full h-[18rem] lg:h-[30rem] flex justify-center items-center ">
-            <div className=" bg-white aspect-square w-[8rem] lg:w-[15rem]">
+        <div className=" bg-black w-full h-[40%] lg:h-[50%] flex justify-center items-center ">
+            <div className=" bg-white aspect-square w-[9.75rem] lg:w-[17.0625rem]">
                 <TimerRoulette time={5000} />
             </div>
         </div>
